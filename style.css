@@ -48,6 +48,19 @@ body {
     border-radius: 5px;
 }
 
+.banner-publicitario {
+            width: 100%;
+            overflow: hidden;
+            background-color: #333; /* A placeholder color */
+        }
+        .banner-publicitario img {
+            width: 100%;
+            max-height: 20%;
+            display: block; /* Remove extra space below the image */
+        }
+
+
+
 .subpartes input[type=checkbox] {
     margin-right: 5px;
 }
