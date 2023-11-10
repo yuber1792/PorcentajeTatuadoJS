@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porcentaje de Tatuajes</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+    
+
+
+<div id="contenedor">
+    <div id="secciones-tatuajes">
+        <div id="botonera">
+
+               <!-- Cabeza -->
+            <div class="parte-cuerpo">
+                <label>Cabeza</label>
+                <div class="subpartes">
+                    <input type="checkbox" id="cabeza-todo" onchange="seleccionarTodo('cabeza', this.checked)"> Seleccionar Todo<br>
+                    <input type="checkbox" class="cabeza-subparte" id="cabeza-frente" data-value="1" onchange="updatePercentage('cabeza-frente', 1)"> Frente (1%)<br>
+                    <input type="checkbox" class="cabeza-subparte" id="cabeza-cuero-cabelludo" data-value="2" onchange="updatePercentage('cabeza-cuero-cabelludo', 2)"> Cuero Cabelludo (2%)<br>
+                    <input type="checkbox" class="cabeza-subparte" id="cabeza-nuca" data-value="1" onchange="updatePercentage('cabeza-nuca', 1)"> Nuca (1%)<br>
+                    <input type="checkbox" class="cabeza-subparte" id="cabeza-cara" data-value="2" onchange="updatePercentage('cabeza-cara', 2)"> Cara (2%)<br>
+                </div>
+            </div>
+
+
+                      <!-- Cuello -->
+            <div class="parte-cuerpo">
+                <label>Cuello</label>
+                <div class="subpartes">
+                    <input type="checkbox" id="cuello-todo" onchange="seleccionarTodo('cuello', this.checked)">Seleccionar Todo<br>
+                    <input type="checkbox" class="cuello-subparte" id="cuello-parte-delantera" data-value="1.5" onchange="updatePercentage('cuello-parte-delantera', 1.5)"> Parte Delantera (1.5%)<br>
+                    <input type="checkbox" class="cuello-subparte" id="cuello-parte-trasera" data-value="1.5" onchange="updatePercentage('cuello-parte-trasera', 1.5)"> Parte Trasera (1.5%)<br>
+                </div>
+            </div>
+
+
+                   <!-- Tronco Frontal -->
+            <div class="parte-cuerpo">
+                <label>Tronco Frontal</label>
+                <div class="subpartes">
+                    <input type="checkbox" id="tronco-frontal-todo" onchange="seleccionarTodo('tronco-frontal', this.checked)"> Seleccionar Todo<br>
+                    <input type="checkbox" class="tronco-frontal-subparte" id="tronco-frontal-pecho" data-value="6" onchange="updatePercentage('tronco-frontal-pecho', 6)"> Pecho (6%)<br>
+                    <input type="checkbox" class="tronco-frontal-subparte" id="tronco-frontal-abdomen-superior" data-value="4" onchange="updatePercentage('tronco-frontal-abdomen-superior', 4)"> Abdomen Superior (4%)<br>
+                    <input type="checkbox" class="tronco-frontal-subparte" id="tronco-frontal-abdomen-inferior" data-value="3" onchange="updatePercentage('tronco-frontal-abdomen-inferior', 3)"> Abdomen Inferior (3%)<br>
+                </div>
+            </div>
+                       <!-- Tronco Espalda -->
+            <div class="parte-cuerpo">
+                <label>Tronco Espalda</label>
+                <div class="subpartes">
+                    <input type="checkbox" id="tronco-espalda-todo" onchange="seleccionarTodo('tronco-espalda', this.checked)"> Seleccionar Todo<br>
+                    <input type="checkbox" class="tronco-espalda-subparte" id="tronco-espalda-parte-superior" data-value="6" onchange="updatePercentage('tronco-espalda-parte-superior', 6)"> Parte Superior (6%)<br>
+                    <input type="checkbox" class="tronco-espalda-subparte" id="tronco-espalda-parte-media" data-value="4" onchange="updatePercentage('tronco-espalda-parte-media', 4)"> Parte Media (4%)<br>
+                    <input type="checkbox" class="tronco-espalda-subparte" id="tronco-espalda-parte-inferior" data-value="3" onchange="updatePercentage('tronco-espalda-parte-inferior', 3)"> Parte Inferior (3%)<br>
+                </div>
+            </div>
+
+
+            <!-- Brazo Izquierdo -->
+            <div class="parte-cuerpo">
+                <label>Brazo Izquierdo</label>
+                <div class="subpartes">
+                    <input type="checkbox" id="brazo-izquierdo-todo" onchange="seleccionarTodo('brazo-izquierdo', this.checked)"> Seleccionar Todo<br>
+                    <input type="checkbox" class="brazo-izquierdo-subparte" id="brazo-izquierdo-hombro" data-value="2" onchange="updatePercentage('brazo-izquierdo-hombro', 2)"> Hombro (2%)<br>
+                    <input type="checkbox" class="brazo-izquierdo-subparte" id="brazo-izquierdo-biceps" data-value="2" onchange="updatePercentage('brazo-izquierdo-biceps', 2)"> Bíceps (2%)<br>
+                    <input type="checkbox" class="brazo-izquierdo-subparte" id="brazo-izquierdo-triceps" data-value="2" onchange="updatePercentage('brazo-izquierdo-triceps', 2)"> Tríceps (2%)<br>
+                    <input type="checkbox" class="brazo-izquierdo-subparte" id="brazo-izquierdo-antebrazo" data-value="3" onchange="updatePercentage('brazo-izquierdo-antebrazo', 3)"> Antebrazo (3%)<br>
+                    <input type="checkbox" class="brazo-izquierdo-subparte" id="brazo-izquierdo-muneca" data-value="1" onchange="updatePercentage('brazo-izquierdo-muneca', 1)"> Muñeca (1%)<br>
+                    <input type="checkbox" class="brazo-izquierdo-subparte" id="brazo-izquierdo-mano" data-value="2" onchange="updatePercentage('brazo-izquierdo-mano', 2)"> Mano (2%)<br>
+                </div>
+            </div>
+
+
+                      <!-- Brazo Derecho -->
+            <div class="parte-cuerpo">
+                <label>Brazo Derecho</label>
+                <div class="subpartes">
+                    <input type="checkbox" id="brazo-derecho-todo" onchange="seleccionarTodo('brazo-derecho', this.checked)"> Seleccionar Todo<br>
+                    <input type="checkbox" class="brazo-derecho-subparte" id="brazo-derecho-hombro" data-value="2" onchange="updatePercentage('brazo-derecho-hombro', 2)"> Hombro (2%)<br>
+                    <input type="checkbox" class="brazo-derecho-subparte" id="brazo-derecho-biceps" data-value="2" onchange="updatePercentage('brazo-derecho-biceps', 2)"> Bíceps (2%)<br>
+                    <input type="checkbox" class="brazo-derecho-subparte" id="brazo-derecho-triceps" data-value="2" onchange="updatePercentage('brazo-derecho-triceps', 2)"> Tríceps (2%)<br>
+                    <input type="checkbox" class="brazo-derecho-subparte" id="brazo-derecho-antebrazo" data-value="3" onchange="updatePercentage('brazo-derecho-antebrazo', 3)"> Antebrazo (3%)<br>
+                    <input type="checkbox" class="brazo-derecho-subparte" id="brazo-derecho-muneca" data-value="1" onchange="updatePercentage('brazo-derecho-muneca', 1)"> Muñeca (1%)<br>
+                    <input type="checkbox" class="brazo-derecho-subparte" id="brazo-derecho-mano" data-value="2" onchange="updatePercentage('brazo-derecho-mano', 2)"> Mano (2%)<br>
+                </div>
+            </div>
+
+
+
+                       <!-- Pierna Izquierda -->
+            <div class="parte-cuerpo">
+                <label>Pierna Izquierda</label>
+                <div class="subpartes">
+                    <input type="checkbox" id="pierna-izquierda-todo" onchange="seleccionarTodo('pierna-izquierda', this.checked)"> Seleccionar Todo<br>
+                    <input type="checkbox" class="pierna-izquierda-subparte" id="pierna-izquierda-muslo" data-value="6" onchange="updatePercentage('pierna-izquierda-muslo', 6)"> Muslo (6%)<br>
+                    <input type="checkbox" class="pierna-izquierda-subparte" id="pierna-izquierda-rodilla" data-value="2" onchange="updatePercentage('pierna-izquierda-rodilla', 2)"> Rodilla (2%)<br>
+                    <input type="checkbox" class="pierna-izquierda-subparte" id="pierna-izquierda-pantorrilla" data-value="6" onchange="updatePercentage('pierna-izquierda-pantorrilla', 6)"> Pantorrilla (6%)<br>
+                    <input type="checkbox" class="pierna-izquierda-subparte" id="pierna-izquierda-tobillo" data-value="2" onchange="updatePercentage('pierna-izquierda-tobillo', 2)"> Tobillo (2%)<br>
+                    <input type="checkbox" class="pierna-izquierda-subparte" id="pierna-izquierda-pie" data-value="2" onchange="updatePercentage('pierna-izquierda-pie', 2)"> Pie (2%)<br>
+                </div>
+            </div>
+
+
+                       <!-- Pierna Derecha -->
+            <div class="parte-cuerpo">
+                <label>Pierna Derecha</label>
+                <div class="subpartes">
+                    <input type="checkbox" id="pierna-derecha-todo" onchange="seleccionarTodo('pierna-derecha', this.checked)"> Seleccionar Todo<br>
+                    <input type="checkbox" class="pierna-derecha-subparte" id="pierna-derecha-muslo" data-value="6" onchange="updatePercentage('pierna-derecha-muslo', 6)"> Muslo (6%)<br>
+                    <input type="checkbox" class="pierna-derecha-subparte" id="pierna-derecha-rodilla" data-value="2" onchange="updatePercentage('pierna-derecha-rodilla', 2)"> Rodilla (2%)<br>
+                    <input type="checkbox" class="pierna-derecha-subparte" id="pierna-derecha-pantorrilla" data-value="6" onchange="updatePercentage('pierna-derecha-pantorrilla', 6)"> Pantorrilla (6%)<br>
+                    <input type="checkbox" class="pierna-derecha-subparte" id="pierna-derecha-tobillo" data-value="2" onchange="updatePercentage('pierna-derecha-tobillo', 2)"> Tobillo (2%)<br>
+                    <input type="checkbox" class="pierna-derecha-subparte" id="pierna-derecha-pie" data-value="2" onchange="updatePercentage('pierna-derecha-pie', 2)"> Pie (2%)<br>
+                </div>
+            </div>
+
+
+                   <!-- Partes Pequeñas -->
+            <div class="parte-cuerpo">
+                <label>Partes Pequeñas</label>
+                <div class="subpartes">
+                    <input type="checkbox" id="partes-pequenas-todo" onchange="seleccionarTodo('partes-pequenas', this.checked)"> Seleccionar Todo<br>
+                    <input type="checkbox" class="partes-pequenas-subparte" id="dedos-mano-izquierda" data-value="1" onchange="updatePercentage('dedos-mano-izquierda', 1)"> Dedos Mano Izquierda (1%)<br>
+                    <input type="checkbox" class="partes-pequenas-subparte" id="dedos-mano-derecha" data-value="1" onchange="updatePercentage('dedos-mano-derecha', 1)"> Dedos Mano Derecha (1%)<br>
+                    <input type="checkbox" class="partes-pequenas-subparte" id="dedos-pie-izquierdo" data-value="1" onchange="updatePercentage('dedos-pie-izquierdo', 1)"> Dedos Pie Izquierdo (1%)<br>
+                    <input type="checkbox" class="partes-pequenas-subparte" id="dedos-pie-derecho" data-value="1" onchange="updatePercentage('dedos-pie-derecho', 1)"> Dedos Pie Derecho (1%)<br>
+                    <input type="checkbox" class="partes-pequenas-subparte" id="orejas" data-value="1" onchange="updatePercentage('orejas', 1)"> Orejas (1%)<br>
+                    <!-- Agregar más partes pequeñas según sea necesario -->
+                </div>
+            </div>
+
+
+
+
+        <!-- Repetir para todas las partes principales del cuerpo -->
+
+    </div>
+        <!-- Aquí van todas las secciones de tatuajes (cabeza, cuello, brazos, etc.) -->
+    </div>
+    <div id="informacion-adicional">
+        
+    <div id="porcentaje">
+        <h2>Porcentaje Tatuado: <span id="valorPorcentaje">0</span></h2>
+    </div>
+
+<!--<button onclick="generarPDF()">Guardar como PDF</button>-->
+
+
+     <!-- Sección del Banner Publicitario -->
+<div id="banner-publicitario">
+    <a href="https://www.instagram.com/tebori_cerveza_artesanal/" target="_blank" rel="noopener noreferrer">
+        <img src="imagenBanner.png" alt="Tebori Cerveza Artesanal" style="width:100%;height:auto;">
+    </a>
+</div>
+
+    </div>
+</div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

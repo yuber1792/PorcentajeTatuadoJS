@@ -1,0 +1,69 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+#contenedor {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#secciones-tatuajes, #informacion-adicional {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.parte-cuerpo {
+    background-color: #e8f5e9; /* Un color suave y agradable */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    display: inline-block;
+    text-align: left; /* Alineación a la izquierda para las opciones */
+}
+
+#porcentaje {
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#banner-publicitario {
+    background-color: #555;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.subpartes input[type=checkbox] {
+    margin-right: 5px;
+}
+
+/* Estilos adicionales... */
+
+@media (max-width: 800px) {
+    #contenedor {
+        flex-direction: column;
+    }
+
+    #secciones-tatuajes, #informacion-adicional {
+        max-width: 100%;
+    }
+
+    .parte-cuerpo {
+        display: block;
+    }
+}
